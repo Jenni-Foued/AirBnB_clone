@@ -18,14 +18,7 @@ class BaseModel:
 		"""
 		self.id = str(uuid.uuid4())
 		self.created_at = self.updated_at = datetime.now()
-		if kwargs:
-			for k, v in kwargs.items():
-                if k in ["created_at", "updated_at"]:
-                    v = datetime.strptime(v, date)
-                if k != "__class__":
-                    setattr(self, k, v)
-        else:
-            models.storage.new(self)
+
 	def __str__(self):
 		"""
 		string representation of the BaseModel class
